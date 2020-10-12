@@ -69,15 +69,6 @@ d3.csv("assets/data/data.csv").then(function(trendData){
     .attr("r", "15")
     .attr("fill", "green")
     .attr("opacity", ".25");
-    // .attr("text", trendData.abbr);
-
-    chartGroup.append("text")
-        .attr("cx", function(d){return -20})
-        .text(function(d){return trendData.abbr});
-    // bonus
-    // initialize tool tip
-
-    // create tool tip in the chart
 
     // label axes
     chartGroup.append("text")
