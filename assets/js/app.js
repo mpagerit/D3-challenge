@@ -70,6 +70,28 @@ d3.csv("assets/data/data.csv").then(function(trendData){
     .attr("fill", "green")
     .attr("opacity", ".25");
 
+
+      // Initialize tool tip
+
+    var toolTip = d3.tip()
+      .attr("class", "tooltip")
+      .offset([80, -60])
+      .html(function(d) {
+        return (`${d.state}<br>% in poverty: ${d.poverty}<br>% obesity: ${d.obesity}`);
+      });
+
+    // Create tooltip in the chart
+    chartGroup.call(toolTip);
+
+    // Create event listeners to display and hide the tooltip
+    circlesGroup.on("mouseover", function(trendData) {
+      toolTip.show(trendData, this);
+    })
+      // onmouseout event
+    .on("mouseout", function(trendData, index) {
+      toolTip.hide(trendData);
+    });
+
     // label axes
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
